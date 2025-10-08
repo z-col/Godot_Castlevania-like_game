@@ -1,12 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://w47nt3bnp042"]
+[gd_scene load_steps=6 format=3 uid="uid://w47nt3bnp042"]
 
 [ext_resource type="Script" uid="uid://flfyxmpp076a" path="res://PlayGround.gd" id="1_2grsu"]
-[ext_resource type="Texture2D" uid="uid://b6j6rmvytdm7u" path="res://icon.png" id="1_fspg8"]
+[ext_resource type="PackedScene" uid="uid://bdnv77pll6n1y" path="res://Player/Player.tscn" id="2_2grsu"]
+
+[sub_resource type="Gradient" id="Gradient_fspg8"]
+colors = PackedColorArray(0, 0, 0, 1, 0.098728366, 0.09872835, 0.09872835, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2grsu"]
+gradient = SubResource("Gradient_fspg8")
+width = 32
+height = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fspg8"]
+size = Vector2(32, 32)
 
 [node name="PlayGround" type="Node2D"]
 script = ExtResource("1_2grsu")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(238.99998, 139)
-scale = Vector2(0.6629137, 0.6629137)
-texture = ExtResource("1_fspg8")
+position = Vector2(623, 260)
+scale = Vector2(39.9375, 1)
+texture = SubResource("GradientTexture2D_2grsu")
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Icon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/StaticBody2D"]
+shape = SubResource("RectangleShape2D_fspg8")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(-1, 112.5)
+scale = Vector2(0.937499, 8.28125)
+texture = SubResource("GradientTexture2D_2grsu")
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Icon2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_fspg8")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(482, 191)
+scale = Vector2(3.1249995, 0.875)
+texture = SubResource("GradientTexture2D_2grsu")
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Icon3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_fspg8")
+
+[node name="Player" parent="." instance=ExtResource("2_2grsu")]
+position = Vector2(103, 202)
